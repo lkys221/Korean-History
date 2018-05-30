@@ -39,8 +39,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="20dp">
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:adjustViewBounds="true"
+                android:maxHeight="20dp"
+                android:maxWidth="20dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/one"
+                />
 
             <TextView
                 android:id="@+id/choice1"
@@ -48,7 +64,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="choice1"
-                android:textSize="15dp"/>
+                android:textSize="15sp"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_gravity="bottom"
+                android:maxHeight="20dp"
+                android:maxWidth="20dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/two"
+                />
 
             <TextView
                 android:id="@+id/choice2"
@@ -56,7 +92,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="choice2"
-                android:textSize="15dp"/>
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:adjustViewBounds="true"
+                android:maxHeight="20dp"
+                android:maxWidth="20dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/three"
+                />
 
             <TextView
                 android:id="@+id/choice3"
@@ -64,7 +118,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="choice3"
-                android:textSize="15dp"/>
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:adjustViewBounds="true"
+                android:maxHeight="20dp"
+                android:maxWidth="20dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/four"
+                />
 
             <TextView
                 android:id="@+id/choice4"
@@ -74,6 +146,24 @@
                 android:text="choice4"
                 android:textSize="15dp"/>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:adjustViewBounds="true"
+                android:maxHeight="20dp"
+                android:maxWidth="20dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/five"
+                />
+
             <TextView
                 android:id="@+id/choice5"
                 android:layout_width="match_parent"
@@ -81,6 +171,8 @@
                 android:layout_marginTop="8dp"
                 android:text="choice5"
                 android:textSize="15dp"/>
+
+        </LinearLayout>
 
 
     </LinearLayout>

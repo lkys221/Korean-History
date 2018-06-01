@@ -45,12 +45,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_gravity="top"
                 android:adjustViewBounds="true"
                 android:maxHeight="20dp"
                 android:maxWidth="20dp"
@@ -62,7 +63,7 @@
                 android:id="@+id/choice1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_gravity="top"
                 android:text="choice1"
                 android:textSize="15sp"/>
 
@@ -73,13 +74,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:layout_gravity="bottom"
+                android:layout_gravity="top"
                 android:maxHeight="20dp"
                 android:maxWidth="20dp"
                 android:layout_marginEnd="4dp"
@@ -90,7 +92,7 @@
                 android:id="@+id/choice2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_gravity="top"
                 android:text="choice2"
                 android:textSize="15sp"/>
 
@@ -99,12 +101,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_gravity="top"
                 android:adjustViewBounds="true"
                 android:maxHeight="20dp"
                 android:maxWidth="20dp"
@@ -116,7 +119,7 @@
                 android:id="@+id/choice3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_gravity="top"
                 android:text="choice3"
                 android:textSize="15sp"/>
 
@@ -125,12 +128,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_gravity="top"
                 android:adjustViewBounds="true"
                 android:maxHeight="20dp"
                 android:maxWidth="20dp"
@@ -142,16 +146,17 @@
                 android:id="@+id/choice4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="choice4"
-                android:textSize="15dp"/>
+                android:layout_gravity="top"
+                android:text="center_vertical"
+                android:textSize="15dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -168,8 +173,8 @@
                 android:id="@+id/choice5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="choice5"
+                android:layout_gravity="top"
+                android:text="정착 생활을 하게 되면서 움집이 처음 만들어졌습니다.정착 생활을 하게 되면서 움집이 처음 만들어졌습니다."
                 android:textSize="15dp"/>
 
         </LinearLayout>

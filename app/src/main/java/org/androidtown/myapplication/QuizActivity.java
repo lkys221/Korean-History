@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
     TextView question, choice1, choice2, choice3, choice4, choice5;
@@ -50,8 +51,31 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
-    public void onNextBtnClicked(View v){
+    public boolean onNextBtnClicked(View v){
         index++;
+
+        if(index > 1){
+            Toast.makeText(getApplicationContext(), "End of quiz", Toast.LENGTH_LONG).show();
+            finish();
+            return false;
+        }
+
+        question.setText(questionArr[index]);
+
+        Drawable d = getResources().getDrawable(imageArr[index]);
+        imageView.setImageDrawable(d);
+
+        choice1.setText(choiceArr[index][0]);
+        choice2.setText(choiceArr[index][1]);
+        choice3.setText(choiceArr[index][2]);
+        choice4.setText(choiceArr[index][3]);
+        choice5.setText(choiceArr[index][4]);
+
+        return true;
+    }
+
+    public void onPreviousBtnClicked(View v){
+        index--;
 
         question.setText(questionArr[index]);
 

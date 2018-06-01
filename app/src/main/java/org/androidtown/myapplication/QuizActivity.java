@@ -74,8 +74,14 @@ public class QuizActivity extends AppCompatActivity {
         return true;
     }
 
-    public void onPreviousBtnClicked(View v){
+    public boolean onPreviousBtnClicked(View v){
         index--;
+
+        if(index < 0){
+            Toast.makeText(getApplicationContext(), "This is the first question", Toast.LENGTH_LONG).show();
+            index++;
+            return false;
+        }
 
         question.setText(questionArr[index]);
 
@@ -87,6 +93,8 @@ public class QuizActivity extends AppCompatActivity {
         choice3.setText(choiceArr[index][2]);
         choice4.setText(choiceArr[index][3]);
         choice5.setText(choiceArr[index][4]);
+
+        return true;
     }
 
 

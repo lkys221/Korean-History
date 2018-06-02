@@ -1,9 +1,11 @@
 package org.androidtown.myapplication;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 public class QuizActivity extends AppCompatActivity {
     TextView question, choice1, choice2, choice3, choice4, choice5;
     ImageView imageView;
+    ViewGroup layout_choice1, layout_choice2, layout_choice3, layout_choice4, layout_choice5;
 
 
     String[] questionArr = {"1.교사의 질문에대한 답변으로 가장 적절한 것은?", "2. (가), (나) 나라에 대한 설명으로 옳은 것은?"};
@@ -21,6 +24,9 @@ public class QuizActivity extends AppCompatActivity {
     int[] answerArr = {4, 3};
 
     int index = 0;
+    boolean choiceClicked = false;
+    int choice = -1;
+    int[] finalChoices = new int[25];
 
 
 
@@ -30,6 +36,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        //init
         question = (TextView) findViewById(R.id.question);
         imageView = (ImageView) findViewById(R.id.image);
         choice1 = (TextView) findViewById(R.id.choice1);
@@ -49,33 +56,105 @@ public class QuizActivity extends AppCompatActivity {
         choice4.setText(choiceArr[0][3]);
         choice5.setText(choiceArr[0][4]);
 
+
+        //choices
+        layout_choice1 = (ViewGroup) findViewById(R.id.layout_choice1);
+        layout_choice2 = (ViewGroup) findViewById(R.id.layout_choice2);
+        layout_choice3 = (ViewGroup) findViewById(R.id.layout_choice3);
+        layout_choice4 = (ViewGroup) findViewById(R.id.layout_choice4);
+        layout_choice5 = (ViewGroup) findViewById(R.id.layout_choice5);
+
+        layout_choice1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickChoice(layout_choice1);
+                choice = 1;
+            }
+        });
+        layout_choice2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickChoice(layout_choice2);
+                choice = 2;
+            }
+        });
+        layout_choice3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickChoice(layout_choice3);
+                choice = 3;
+            }
+        });
+        layout_choice4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickChoice(layout_choice4);
+                choice = 4;
+            }
+        });
+        layout_choice5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickChoice(layout_choice5);
+                choice = 5;
+            }
+        });
+
     }
 
     public boolean onNextBtnClicked(View v){
+        //save current question's choice
+        finalChoices[index] = choice;
+        System.out.println("answer is " + finalChoices[0]);
+        System.out.println(finalChoices[1]);
+
+        //to next question
         index++;
+        choice = -1;
 
         if(index > 1){
             Toast.makeText(getApplicationContext(), "End of quiz", Toast.LENGTH_LONG).show();
             finish();
             return false;
         }
+        else {
+            //next question
+            question.setText(questionArr[index]);
+            //next image
+            Drawable d = getResources().getDrawable(imageArr[index]);
+            imageView.setImageDrawable(d);
+            //next choices
+            setChoicesText(index);
 
-        question.setText(questionArr[index]);
+            //marking saved choices
+            switch (finalChoices[index]){
+                case 0: emptyChoices();
+                    break;
+                case 1: clickChoice(layout_choice1);
+                    break;
+                case 2: clickChoice(layout_choice2);
+                    break;
+                case 3: clickChoice(layout_choice3);
+                    break;
+                case 4: clickChoice(layout_choice4);
+                    break;
+                case 5: clickChoice(layout_choice5);
+                    break;
+            }
 
-        Drawable d = getResources().getDrawable(imageArr[index]);
-        imageView.setImageDrawable(d);
+        }
 
-        choice1.setText(choiceArr[index][0]);
-        choice2.setText(choiceArr[index][1]);
-        choice3.setText(choiceArr[index][2]);
-        choice4.setText(choiceArr[index][3]);
-        choice5.setText(choiceArr[index][4]);
 
-        return true;
-    }
+                return true;
+        }
+
 
     public boolean onPreviousBtnClicked(View v){
+        //save current question's choice
+        finalChoices[index] = choice;
+
         index--;
+        choice = -1;
 
         if(index < 0){
             Toast.makeText(getApplicationContext(), "This is the first question", Toast.LENGTH_LONG).show();
@@ -88,16 +167,58 @@ public class QuizActivity extends AppCompatActivity {
         Drawable d = getResources().getDrawable(imageArr[index]);
         imageView.setImageDrawable(d);
 
-        choice1.setText(choiceArr[index][0]);
-        choice2.setText(choiceArr[index][1]);
-        choice3.setText(choiceArr[index][2]);
-        choice4.setText(choiceArr[index][3]);
-        choice5.setText(choiceArr[index][4]);
+        setChoicesText(index);
+
+        //marking saved choices
+        switch (finalChoices[index]){
+            case -1: emptyChoices();
+                break;
+            case 0: emptyChoices();
+                break;
+            case 1: clickChoice(layout_choice1);
+                break;
+            case 2: clickChoice(layout_choice2);
+                break;
+            case 3: clickChoice(layout_choice3);
+                break;
+            case 4: clickChoice(layout_choice4);
+                break;
+            case 5: clickChoice(layout_choice5);
+                break;
+        }
 
         return true;
     }
 
 
+    //choices 관련 method
+    private void setChoicesText(int index) {
+        choice1.setText(choiceArr[index][0]);
+        choice2.setText(choiceArr[index][1]);
+        choice3.setText(choiceArr[index][2]);
+        choice4.setText(choiceArr[index][3]);
+        choice5.setText(choiceArr[index][4]);
+    }
+
+    public void clickChoice(ViewGroup v){
+        if(choiceClicked == true){
+            emptyChoices();
+            v.setBackgroundResource(R.drawable.layout_clicked);
+        }
+        else{
+            choiceClicked = true;
+            v.setBackgroundResource(R.drawable.layout_clicked);
+        }
+
+    }
+
+    public void emptyChoices(){
+        layout_choice1.setBackgroundResource(R.drawable.layout_rc);
+        layout_choice2.setBackgroundResource(R.drawable.layout_rc);
+        layout_choice3.setBackgroundResource(R.drawable.layout_rc);
+        layout_choice4.setBackgroundResource(R.drawable.layout_rc);
+        layout_choice5.setBackgroundResource(R.drawable.layout_rc);
+    }
 
 
 

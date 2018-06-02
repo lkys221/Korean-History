@@ -25,7 +25,7 @@ public class QuizActivity extends AppCompatActivity {
 
     int index = 0;
     boolean choiceClicked = false;
-    int choice = -1;
+    int choice = 0;
     int[] finalChoices = new int[25];
 
 
@@ -104,13 +104,14 @@ public class QuizActivity extends AppCompatActivity {
 
     public boolean onNextBtnClicked(View v){
         //save current question's choice
-        finalChoices[index] = choice;
+        if(choice != 0)
+            finalChoices[index] = choice;
         System.out.println("answer is " + finalChoices[0]);
         System.out.println(finalChoices[1]);
 
         //to next question
         index++;
-        choice = -1;
+        choice = 0;
 
         if(index > 1){
             Toast.makeText(getApplicationContext(), "End of quiz", Toast.LENGTH_LONG).show();
@@ -129,6 +130,7 @@ public class QuizActivity extends AppCompatActivity {
             //marking saved choices
             switch (finalChoices[index]){
                 case 0: emptyChoices();
+                    choice = 0;
                     break;
                 case 1: clickChoice(layout_choice1);
                     break;
@@ -151,10 +153,11 @@ public class QuizActivity extends AppCompatActivity {
 
     public boolean onPreviousBtnClicked(View v){
         //save current question's choice
-        finalChoices[index] = choice;
+        if(choice != 0)
+            finalChoices[index] = choice;
 
         index--;
-        choice = -1;
+        choice = 0;
 
         if(index < 0){
             Toast.makeText(getApplicationContext(), "This is the first question", Toast.LENGTH_LONG).show();
@@ -170,9 +173,9 @@ public class QuizActivity extends AppCompatActivity {
         setChoicesText(index);
 
         //marking saved choices
+
+
         switch (finalChoices[index]){
-            case -1: emptyChoices();
-                break;
             case 0: emptyChoices();
                 break;
             case 1: clickChoice(layout_choice1);

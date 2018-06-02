@@ -1,222 +1,232 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:layout_height="match_parent">
+
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp">
-
-        <TextView
-            android:id="@+id/question"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="question"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            app:srcCompat="@drawable/go_39_01"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginTop="10dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/layout_rc"
-            android:layout_marginTop="8dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:adjustViewBounds="true"
-                android:maxHeight="20dp"
-                android:maxWidth="20dp"
-                android:layout_marginEnd="4dp"
-                android:src="@drawable/one"
-                />
-
-            <TextView
-                android:id="@+id/choice1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:text="choice1"
-                android:textSize="15sp"/>
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:layout_gravity="top"
-                android:maxHeight="20dp"
-                android:maxWidth="20dp"
-                android:layout_marginEnd="4dp"
-                android:src="@drawable/two"
-                />
-
-            <TextView
-                android:id="@+id/choice2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:text="choice2"
-                android:textSize="15sp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:adjustViewBounds="true"
-                android:maxHeight="20dp"
-                android:maxWidth="20dp"
-                android:layout_marginEnd="4dp"
-                android:src="@drawable/three"
-                />
-
-            <TextView
-                android:id="@+id/choice3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:text="choice3"
-                android:textSize="15sp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:adjustViewBounds="true"
-                android:maxHeight="20dp"
-                android:maxWidth="20dp"
-                android:layout_marginEnd="4dp"
-                android:src="@drawable/four"
-                />
-
-            <TextView
-                android:id="@+id/choice4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:text="center_vertical"
-                android:textSize="15dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:adjustViewBounds="true"
-                android:maxHeight="20dp"
-                android:maxWidth="20dp"
-                android:layout_marginEnd="4dp"
-                android:src="@drawable/five"
-                />
-
-            <TextView
-                android:id="@+id/choice5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:text="정착 생활을 하게 되면서 움집이 처음 만들어졌습니다.정착 생활을 하게 되면서 움집이 처음 만들어졌습니다."
-                android:textSize="15dp"/>
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-    </LinearLayout>
-
-    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
-        <Button
-            android:id="@+id/previous"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Previous"
-            android:onClick="onPreviousBtnClicked"
-            />
+            android:layout_marginLeft="10dp">
 
-        <Button
-            android:id="@+id/next"
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="question"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/go_39_01"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="Next"
-            android:onClick="onNextBtnClicked"
-            />
+            android:orientation="vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="10dp">
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_rc"
+                android:layout_marginTop="8dp">
 
-</LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="20dp"
+                    android:maxWidth="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/one"
+                    />
 
+                <TextView
+                    android:id="@+id/choice1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:text="choice1"
+                    android:textSize="15sp"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/layout_rc">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="top"
+                    android:maxHeight="20dp"
+                    android:maxWidth="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/two"
+                    />
+
+                <TextView
+                    android:id="@+id/choice2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:text="choice2"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_rc"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="20dp"
+                    android:maxWidth="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/three"
+                    />
+
+                <TextView
+                    android:id="@+id/choice3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:text="choice3"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_rc"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="20dp"
+                    android:maxWidth="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/four"
+                    />
+
+                <TextView
+                    android:id="@+id/choice4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:text="center_vertical"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_rc"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="20dp"
+                    android:maxWidth="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/five"
+                    />
+
+                <TextView
+                    android:id="@+id/choice5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:text="정착 생활을 하게 되면서 움집이 처음 만들어졌습니다.정착 생활을 하게 되면서 움집이 처음 만들어졌습니다."
+                    android:textSize="15dp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom">
+
+            <Button
+                android:id="@+id/previous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Previous"
+                android:onClick="onPreviousBtnClicked"
+                />
+
+            <Button
+                android:id="@+id/next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Next"
+                android:onClick="onNextBtnClicked"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>
 
 

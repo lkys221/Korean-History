@@ -178,7 +178,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:background="@drawable/layout_rc"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -203,38 +204,6 @@
 
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="bottom">
-
-                <Button
-                    android:id="@+id/previous"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Previous"
-                    android:onClick="onPreviousBtnClicked"
-                    />
-
-                <Button
-                    android:id="@+id/next"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="Next"
-                    android:onClick="onNextBtnClicked"
-                    />
-
-            </RelativeLayout>
 
         </LinearLayout>
 

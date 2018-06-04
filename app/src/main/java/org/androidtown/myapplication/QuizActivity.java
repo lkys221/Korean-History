@@ -21,7 +21,7 @@ public class QuizActivity extends AppCompatActivity {
 
     String[] questionArr = {"1.교사의 질문에대한 답변으로 가장 적절한 것은?", "2. (가), (나) 나라에 대한 설명으로 옳은 것은?"};
     String[][] choiceArr = {{"농경과 목축을 시작하여 식량을 생산하였습니다.", "가락바퀴를 이용하여 실을 뽑기 시작하였습니다.", "쟁기, 쇠스랑 등의 철제 농기구를 사용하였습니다.", "거푸집을 이용하여 비파형 동검을 제작하였습니다.", "정착 생활을 하게 되면서 움집이 처음 만들어졌습니다."},
-            {"(가) -남녀가 몸에문신을 새기는 풍습이 있었다.", "(가) -절이 많이생산되어 낙랑괴- 왜에 수출하였다.", "(나) -신성 지역인소도가 존재하였다.", "(나) -읍락 간의 경계를 중시하는 책화가 있었다.", "(가), (나) -물건을 훔친 자는 12배로 배상하게 하였다."}};
+            {"(가) -남녀가 몸에문신을 새기는 풍습이 있었다.", "(가) 철이 많이생산되어 낙랑과 왜에 수출하였다.", "(나) -신성 지역인소도가 존재하였다.", "(나) -읍락 간의 경계를 중시하는 책화가 있었다.", "(가), (나) -물건을 훔친 자는 12배로 배상하게 하였다."}};
 
     int[] imageArr = {R.drawable.go_39_01, R.drawable.go_39_02};
     int[] answerArr = {4, 3};
@@ -39,26 +39,29 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        //Bottom Navigation Bar
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.action_add:
-                        Toast.makeText(QuizActivity.this, "previous clicked", Toast.LENGTH_SHORT).show();
+                    case R.id.action_previous:
+                        onPreviousBtnClicked();
                         break;
                     case R.id.action_middle:
-                        Toast.makeText(QuizActivity.this, "middle clicked", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(QuizActivity.this, "Back to Main Menu", Toast.LENGTH_SHORT).show();
+                        finish();
                         break;
                     case R.id.action_next:
-                        Toast.makeText(QuizActivity.this, "next clicked", Toast.LENGTH_SHORT).show();
+                        onNextBtnClicked();
                         break;
                 }
                 return true;
             }
         });
 
-        //init
+
+        //Initiate the first question
         question = (TextView) findViewById(R.id.question);
         imageView = (ImageView) findViewById(R.id.image);
         choice1 = (TextView) findViewById(R.id.choice1);
@@ -79,7 +82,7 @@ public class QuizActivity extends AppCompatActivity {
         choice5.setText(choiceArr[0][4]);
 
 
-        //choices
+        //Choices related
         layout_choice1 = (ViewGroup) findViewById(R.id.layout_choice1);
         layout_choice2 = (ViewGroup) findViewById(R.id.layout_choice2);
         layout_choice3 = (ViewGroup) findViewById(R.id.layout_choice3);
@@ -124,7 +127,7 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
-    public boolean onNextBtnClicked(View v){
+    public boolean onNextBtnClicked(){
         //save current question's choice
         if(choice != 0)
             finalChoices[index] = choice;
@@ -173,7 +176,7 @@ public class QuizActivity extends AppCompatActivity {
         }
 
 
-    public boolean onPreviousBtnClicked(View v){
+    public boolean onPreviousBtnClicked(){
         //save current question's choice
         if(choice != 0)
             finalChoices[index] = choice;

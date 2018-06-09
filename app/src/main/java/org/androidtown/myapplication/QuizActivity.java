@@ -31,7 +31,7 @@ public class QuizActivity extends AppCompatActivity {
     int index = 0;
     boolean choiceClicked = false;
     int choice = 0;
-    int[] finalChoices = new int[25];
+    int score = 0;
 
 
 
@@ -142,7 +142,8 @@ public class QuizActivity extends AppCompatActivity {
         choice = 0;
 
         if(index > 1){
-            Toast.makeText(getApplicationContext(), "End of quiz", Toast.LENGTH_LONG).show();
+            checkAnswer();
+            Toast.makeText(getApplicationContext(), "Your score is " + score + "/" + 2, Toast.LENGTH_LONG).show();
             deleteData();
             finish();
             return false;
@@ -269,6 +270,16 @@ public class QuizActivity extends AppCompatActivity {
         editor.clear();
     }
 
+    private void checkAnswer(){
+        int userAns;
+
+        for (int i = 0; i < 2; i++) {
+            userAns = loadChoice(i);
+            if(userAns == answerArr[i])
+                score++;
+        }
+
+    }
 
 
 }

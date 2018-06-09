@@ -1,6 +1,8 @@
 package org.androidtown.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -130,9 +132,7 @@ public class QuizActivity extends AppCompatActivity {
     public boolean onNextBtnClicked(){
         //save current question's choice
         if(choice != 0)
-            finalChoices[index] = choice;
-        System.out.println("answer is " + finalChoices[0]);
-        System.out.println(finalChoices[1]);
+            saveChoices(index, choice);
 
         //to next question
         index++;
@@ -153,7 +153,9 @@ public class QuizActivity extends AppCompatActivity {
             setChoicesText(index);
 
             //marking saved choices
-            switch (finalChoices[index]){
+            int finalChoice = loadChoice(index);
+
+            switch (finalChoice){
                 case 0: emptyChoices();
                     choice = 0;
                     break;
@@ -171,7 +173,6 @@ public class QuizActivity extends AppCompatActivity {
 
         }
 
-
                 return true;
         }
 
@@ -179,7 +180,7 @@ public class QuizActivity extends AppCompatActivity {
     public boolean onPreviousBtnClicked(){
         //save current question's choice
         if(choice != 0)
-            finalChoices[index] = choice;
+            saveChoices(index, choice);
 
         index--;
         choice = 0;
@@ -198,9 +199,9 @@ public class QuizActivity extends AppCompatActivity {
         setChoicesText(index);
 
         //marking saved choices
+        int finalChoice = loadChoice(index);
 
-
-        switch (finalChoices[index]){
+        switch (finalChoice){
             case 0: emptyChoices();
                 break;
             case 1: clickChoice(layout_choice1);
@@ -248,7 +249,18 @@ public class QuizActivity extends AppCompatActivity {
         layout_choice5.setBackgroundResource(R.drawable.layout_rc);
     }
 
+    private void saveChoices(int index, int choiceNum){
+        SharedPreferences pref = getSharedPreferences("Choices", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt(""+index, choiceNum);
+        editor.commit();
+    }
 
+    private int loadChoice(int index){
+        SharedPreferences pref = getSharedPreferences("Choices", Activity.MODE_PRIVATE);
+        int finalChoice = pref.getInt(""+index, 0);
+        return finalChoice;
+    }
 
 
 

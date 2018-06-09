@@ -127,6 +127,9 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        //error (need to be fixed)
+        saveChoices(1, 0);
+
     }
 
     public boolean onNextBtnClicked(){
@@ -140,6 +143,7 @@ public class QuizActivity extends AppCompatActivity {
 
         if(index > 1){
             Toast.makeText(getApplicationContext(), "End of quiz", Toast.LENGTH_LONG).show();
+            deleteData();
             finish();
             return false;
         }
@@ -170,11 +174,9 @@ public class QuizActivity extends AppCompatActivity {
                 case 5: clickChoice(layout_choice5);
                     break;
             }
-
         }
-
                 return true;
-        }
+    }
 
 
     public boolean onPreviousBtnClicked(){
@@ -238,7 +240,6 @@ public class QuizActivity extends AppCompatActivity {
             choiceClicked = true;
             v.setBackgroundResource(R.drawable.layout_clicked);
         }
-
     }
 
     public void emptyChoices(){
@@ -260,6 +261,12 @@ public class QuizActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("Choices", Activity.MODE_PRIVATE);
         int finalChoice = pref.getInt(""+index, 0);
         return finalChoice;
+    }
+
+    private void deleteData(){
+        SharedPreferences pref = getSharedPreferences("Choices", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.clear();
     }
 
 

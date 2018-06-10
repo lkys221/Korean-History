@@ -252,6 +252,7 @@ public class QuizActivity extends AppCompatActivity {
     //choices 관련 method
     private boolean setChoicesText(int index) {
         if(choiceArr[index][0].startsWith("go")){
+            clearTextChoices();
 
             String imageName = choiceArr[index][0];
             int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
@@ -332,7 +333,14 @@ public class QuizActivity extends AppCompatActivity {
         choice3.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         choice4.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         choice5.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    }
 
+    private void clearTextChoices(){
+        choice1.setText("");
+        choice2.setText("");
+        choice3.setText("");
+        choice4.setText("");
+        choice5.setText("");
     }
 
 }

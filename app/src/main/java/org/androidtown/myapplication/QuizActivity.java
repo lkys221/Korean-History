@@ -21,17 +21,35 @@ public class QuizActivity extends AppCompatActivity {
     ViewGroup layout_choice1, layout_choice2, layout_choice3, layout_choice4, layout_choice5;
 
 
-    String[] questionArr = {"1.교사의 질문에대한 답변으로 가장 적절한 것은?", "2. (가), (나) 나라에 대한 설명으로 옳은 것은?"};
-    String[][] choiceArr = {{"농경과 목축을 시작하여 식량을 생산하였습니다.", "가락바퀴를 이용하여 실을 뽑기 시작하였습니다.", "쟁기, 쇠스랑 등의 철제 농기구를 사용하였습니다.", "거푸집을 이용하여 비파형 동검을 제작하였습니다.", "정착 생활을 하게 되면서 움집이 처음 만들어졌습니다."},
-            {"(가) -남녀가 몸에문신을 새기는 풍습이 있었다.", "(가) 철이 많이생산되어 낙랑과 왜에 수출하였다.", "(나) -신성 지역인소도가 존재하였다.", "(나) -읍락 간의 경계를 중시하는 책화가 있었다.", "(가), (나) -물건을 훔친 자는 12배로 배상하게 하였다."}};
+    String[] questionArr = {"1.교사의 질문에대한 답변으로 가장 적절한 것은?", "2. (가), (나) 나라에 대한 설명으로 옳은 것은?", "3. 다음 법을 시행하였던 나라에 대한 설명으로 옳은 것은?", "4. 밑줄 그은 ‘대책’으로 옳은 것은?", "5.다음 사건이 일어난 이후의 시실로 옳은 것은?", "6.(개, (나) 사이의 시기에 있었던 사실로 옳은 것은? ", "7.다음 자료에 나타난 시기의사실로 옳은 것은?", "8.(가) 왕에 대한 설명으로 옳은 것은?", "9. (가) 국가의 경제 싱황에 대한 설명으로 옳은 것은?",
+            "10. (가), (나) 왕이 실시한 정책으로 옳은 것은?", "11. (가) 에 들어갈 문화유산으로 옳은 것은?", "12.(개인물에대한 설명으로 옳은 것은?", "13.다음 상황이 전개된 이후의 사실로 옳은 것은?", "14. 밑줄 그은 ‘정책’으로 옳은 것을 〈보기〉에서 고른 것은?", "15. (개인물에대한 설명으로 옳은 것은?"};
 
-    int[] imageArr = {R.drawable.go_39_01, R.drawable.go_39_02};
-    int[] answerArr = {4, 3};
+    String[][] choiceArr = {{"농경과 목축을 시작하여 식량을 생산하였습니다.", "가락바퀴를 이용하여 실을 뽑기 시작하였습니다.", "쟁기, 쇠스랑 등의 철제 농기구를 사용하였습니다.", "거푸집을 이용하여 비파형 동검을 제작하였습니다.", "정착 생활을 하게 되면서 움집이 처음 만들어졌습니다."},
+            {"(가) -남녀가 몸에문신을 새기는 풍습이 있었다.", "(가) 철이 많이생산되어 낙랑과 왜에 수출하였다.", "(나) -신성 지역인소도가 존재하였다.", "(나) -읍락 간의 경계를 중시하는 책화가 있었다.", "(가), (나) -물건을 훔친 자는 12배로 배상하게 하였다."},
+            {"신지,읍차 등의 지배자가 있었다.", "골품제라는 신분 제도를 마련하였다.", "제가 회의에서 국가 중대사를 결정하였다.", "왕 아래상, 대부‘ 장군 등의 관직을 두었다.", "여러 가(加)들이 별도로 사출도를 주관하였다."},
+            {"진대법을 실시하여 빈민을 구제하였다.", "상평창을 설치하여 물기를 조절하였다.", "구황촬요를 간행하여 기근에 대비하였다.", "구제도감을 설립하여 백성을 구호하였다.", "혜민국을 마련하여 병자에게 익뇨을 지급하였다."},
+            {"고구려가 옥저를 복속시켰다.", "백제가 고구려의 평양성을 공격하였다.", "가야 연맹이 대가야를 중심으로 재편되었다.", "신라 지배자의 칭호가 차치-웅으로 바뀌었다.", "고구려가 대빙-군을 축출하고 영토를 확장하였다."},
+            {"무령왕이 22담로에 왕족을 파견히-였다." ,"침류왕이 동진으로부터 불교를 수용하였다.", "의자왕이 신리를 공격하여 대야성을 함락하였다.", "고이왕이 좌평과 관등제의 기본 골격을 마련하였다.", "성왕이고구려를 공격하여한강 유역을 수복하였다."},
+            {"복신과 도침 등이주류성에서 군사를 일으켰다.", "묘청 등이중심이 되어 서경 천도를 주장하였다.", "신리-군이 당의 군대에 맞서 매소성에서 승리하였다.", "지방에서 호족들이반독립적인 세력으로 성장하였다.", "요세가 법화 신앙에중점을 둔 백련 결사를 주도하였다."},
+            {"화랑도를 국가 조직으로 개편하였다.", "이사부를 보내 우산국을 복속시켰다.", "건원이라는 독자적인 연호를 시용하였다.", "관리에게 관료전을 지급하고 녹읍을 폐지하였다.", "호국의 염원을 담아 황룡사 구층 목탑을 건립하였다."},
+            {"울산항이국제 무역헝-으로 번성하였다.", "특산품으로 솔빈부의 말이유명하였다.", "청해진을 설치하여해상 무역을 전개하였다.", "건원중보를 발행하여 화폐 유통을 추진하였다.", "시장을 관리하는 관청인 동시전을 설치하였다."},
+            {"(가) -흑창을 설치하여 민생을 안정시켰다.", "(가) -광덕, 준풍 등의 독자적인 연호를 시용하였다.", "(나) - 12목을 설치하고 지방관을 파견하였다." ,"(나) -상수리 제도를 실시하여 지방 세력을통제하였다.", "(가), (나) -현직 관리에게 전지와 시지를 지급하였다."},
+            {"a", "b", "c", "d", "e"},
+            {"권수정혜결사문을 작성하여 정혜쌍수를 강조하였다.", "해동고승전을 집필하여승려들의 전기를 기록하였다", "보현십원가를 지어 불교 교리를 대중에게 전피-하였다.", "교관겸수를 내세워 이론 연마와 실천을 함께중시하였다.", "삼국유사를 저술하여 불교 중심의 민간 설회를 정리하였다."},
+            {"광군을 창설하여외침에대비하였다.", "거란의 침략을 피해 왕이나주로 피난하였다.", "서희가 외교 담판을 벌여강동 6주를 획득하였다.", "만부교 사건이 일어나 거란과의관계가 악화되었다.", "후주와 사신을 교환히·여 대외 관계의 안정을 꾀하였다."},
+            {"ㄱ, ㄴ", "ㄱ, ㄷ", "ㄴ, ㄷ", "ㄴ, ㄹ", "ㄷ, ㄹ"},
+            {"칭제 건원과 금국 정벌을 주장하였다.", "봉사 10조를 올려 시정 개혁을 제안하였다.", "보현원에서 정변을 일으켜 정권을 장악하였다.", "강화도로 도읍을 옮겨 몽골의 침략에 대비하였다.", "전민변정도감의 판사가 되어 권문세족을 견제하였다."}};
+
+    int[] imageArr = {R.drawable.go_39_01, R.drawable.go_39_02, R.drawable.go_39_03, R.drawable.go_39_04, R.drawable.go_39_05, R.drawable.go_39_06, R.drawable.go_39_07, R.drawable.go_39_08, R.drawable.go_39_09, R.drawable.go_39_10, R.drawable.go_39_11, R.drawable.go_39_12, R.drawable.go_39_13, R.drawable.go_39_14, R.drawable.go_39_15};
+    int[] answerArr = {4, 3, 4, 1, 3, 1, 4, 4, 2, 1, 1, 1, 2, 3, 4};
 
     int index = 0;
     boolean choiceClicked = false;
     int choice = 0;
     int score = 0;
+
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
 
 
 
@@ -40,6 +58,10 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        pref = getSharedPreferences("Choices", Activity.MODE_PRIVATE);
+        editor = pref.edit();
+
 
         //Bottom Navigation Bar
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
@@ -141,9 +163,9 @@ public class QuizActivity extends AppCompatActivity {
         index++;
         choice = 0;
 
-        if(index > 1){
+        if(index > questionArr.length - 1){
             checkAnswer();
-            Toast.makeText(getApplicationContext(), "Your score is " + score + "/" + 2, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Your score is " + score + "/" + questionArr.length, Toast.LENGTH_LONG).show();
             deleteData();
             finish();
             return false;
@@ -252,28 +274,23 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void saveChoices(int index, int choiceNum){
-        SharedPreferences pref = getSharedPreferences("Choices", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
         editor.putInt(""+index, choiceNum);
         editor.commit();
     }
 
     private int loadChoice(int index){
-        SharedPreferences pref = getSharedPreferences("Choices", Activity.MODE_PRIVATE);
         int finalChoice = pref.getInt(""+index, 0);
         return finalChoice;
     }
 
     private void deleteData(){
-        SharedPreferences pref = getSharedPreferences("Choices", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
         editor.clear();
     }
 
     private void checkAnswer(){
         int userAns;
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < questionArr.length; i++) {
             userAns = loadChoice(i);
             if(userAns == answerArr[i])
                 score++;

@@ -1,6 +1,7 @@
 package org.androidtown.myapplication;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,10 @@ public class QuizActivity extends AppCompatActivity {
     TextView question, choice1, choice2, choice3, choice4, choice5;
     ImageView imageView;
     ViewGroup layout_choice1, layout_choice2, layout_choice3, layout_choice4, layout_choice5;
+    ScrollView scrollView;
+
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
 
 
     String[] questionArr = {"1.교사의 질문에대한 답변으로 가장 적절한 것은?", "2. (가), (나) 나라에 대한 설명으로 옳은 것은?", "3. 다음 법을 시행하였던 나라에 대한 설명으로 옳은 것은?", "4. 밑줄 그은 ‘대책’으로 옳은 것은?", "5.다음 사건이 일어난 이후의 시실로 옳은 것은?", "6.(개, (나) 사이의 시기에 있었던 사실로 옳은 것은? ", "7.다음 자료에 나타난 시기의사실로 옳은 것은?", "8.(가) 왕에 대한 설명으로 옳은 것은?", "9. (가) 국가의 경제 싱황에 대한 설명으로 옳은 것은?",
@@ -34,7 +40,7 @@ public class QuizActivity extends AppCompatActivity {
             {"화랑도를 국가 조직으로 개편하였다.", "이사부를 보내 우산국을 복속시켰다.", "건원이라는 독자적인 연호를 시용하였다.", "관리에게 관료전을 지급하고 녹읍을 폐지하였다.", "호국의 염원을 담아 황룡사 구층 목탑을 건립하였다."},
             {"울산항이국제 무역헝-으로 번성하였다.", "특산품으로 솔빈부의 말이유명하였다.", "청해진을 설치하여해상 무역을 전개하였다.", "건원중보를 발행하여 화폐 유통을 추진하였다.", "시장을 관리하는 관청인 동시전을 설치하였다."},
             {"(가) -흑창을 설치하여 민생을 안정시켰다.", "(가) -광덕, 준풍 등의 독자적인 연호를 시용하였다.", "(나) - 12목을 설치하고 지방관을 파견하였다." ,"(나) -상수리 제도를 실시하여 지방 세력을통제하였다.", "(가), (나) -현직 관리에게 전지와 시지를 지급하였다."},
-            {"a", "b", "c", "d", "e"},
+            {"go_39_11_01", "go_39_11_02", "go_39_11_03", "go_39_11_04", "go_39_11_05"},
             {"권수정혜결사문을 작성하여 정혜쌍수를 강조하였다.", "해동고승전을 집필하여승려들의 전기를 기록하였다", "보현십원가를 지어 불교 교리를 대중에게 전피-하였다.", "교관겸수를 내세워 이론 연마와 실천을 함께중시하였다.", "삼국유사를 저술하여 불교 중심의 민간 설회를 정리하였다."},
             {"광군을 창설하여외침에대비하였다.", "거란의 침략을 피해 왕이나주로 피난하였다.", "서희가 외교 담판을 벌여강동 6주를 획득하였다.", "만부교 사건이 일어나 거란과의관계가 악화되었다.", "후주와 사신을 교환히·여 대외 관계의 안정을 꾀하였다."},
             {"ㄱ, ㄴ", "ㄱ, ㄷ", "ㄴ, ㄷ", "ㄴ, ㄹ", "ㄷ, ㄹ"},
@@ -44,12 +50,9 @@ public class QuizActivity extends AppCompatActivity {
     int[] answerArr = {4, 3, 4, 1, 3, 1, 4, 4, 2, 1, 1, 1, 2, 3, 4};
 
     int index = 0;
-    boolean choiceClicked = false;
     int choice = 0;
     int score = 0;
 
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
 
 
 
@@ -59,7 +62,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        pref = getSharedPreferences("Choices", Activity.MODE_PRIVATE);
+        pref = getSharedPreferences("Choices", Context.MODE_PRIVATE);
         editor = pref.edit();
 
 
@@ -84,7 +87,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
         //Initiate the first question
         question = (TextView) findViewById(R.id.question);
         imageView = (ImageView) findViewById(R.id.image);
@@ -149,9 +152,6 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        //error (need to be fixed)
-        saveChoices(1, 0);
-
     }
 
     public boolean onNextBtnClicked(){
@@ -166,11 +166,12 @@ public class QuizActivity extends AppCompatActivity {
         if(index > questionArr.length - 1){
             checkAnswer();
             Toast.makeText(getApplicationContext(), "Your score is " + score + "/" + questionArr.length, Toast.LENGTH_LONG).show();
-            deleteData();
             finish();
             return false;
         }
         else {
+            //scroll up
+            scrollView.fullScroll(ScrollView.FOCUS_UP);
             //next question
             question.setText(questionArr[index]);
             //next image
@@ -198,6 +199,7 @@ public class QuizActivity extends AppCompatActivity {
                     break;
             }
         }
+
                 return true;
     }
 
@@ -215,12 +217,14 @@ public class QuizActivity extends AppCompatActivity {
             index++;
             return false;
         }
-
+        //scroll up
+        scrollView.fullScroll(ScrollView.FOCUS_UP);
+        //next questions
         question.setText(questionArr[index]);
-
+        //next images
         Drawable d = getResources().getDrawable(imageArr[index]);
         imageView.setImageDrawable(d);
-
+        //next choices
         setChoicesText(index);
 
         //marking saved choices
@@ -246,23 +250,47 @@ public class QuizActivity extends AppCompatActivity {
 
 
     //choices 관련 method
-    private void setChoicesText(int index) {
-        choice1.setText(choiceArr[index][0]);
-        choice2.setText(choiceArr[index][1]);
-        choice3.setText(choiceArr[index][2]);
-        choice4.setText(choiceArr[index][3]);
-        choice5.setText(choiceArr[index][4]);
+    private boolean setChoicesText(int index) {
+        if(choiceArr[index][0].startsWith("go")){
+
+            String imageName = choiceArr[index][0];
+            int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
+            choice1.setCompoundDrawablesWithIntrinsicBounds(resID, 0, 0, 0);
+
+            imageName = choiceArr[index][1];
+            resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
+            choice2.setCompoundDrawablesWithIntrinsicBounds(resID, 0, 0, 0);
+
+            imageName = choiceArr[index][2];
+            resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
+            choice3.setCompoundDrawablesWithIntrinsicBounds(resID, 0, 0, 0);
+
+            imageName = choiceArr[index][3];
+            resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
+            choice4.setCompoundDrawablesWithIntrinsicBounds(resID, 0, 0, 0);
+
+            imageName = choiceArr[index][4];
+            resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
+            choice5.setCompoundDrawablesWithIntrinsicBounds(resID, 0, 0, 0);
+
+            return true;
+        }
+        else {
+            clearImageChoices();
+
+            choice1.setText(choiceArr[index][0]);
+            choice2.setText(choiceArr[index][1]);
+            choice3.setText(choiceArr[index][2]);
+            choice4.setText(choiceArr[index][3]);
+            choice5.setText(choiceArr[index][4]);
+
+            return false;
+        }
     }
 
     public void clickChoice(ViewGroup v){
-        if(choiceClicked == true){
             emptyChoices();
             v.setBackgroundResource(R.drawable.layout_clicked);
-        }
-        else{
-            choiceClicked = true;
-            v.setBackgroundResource(R.drawable.layout_clicked);
-        }
     }
 
     public void emptyChoices(){
@@ -298,5 +326,13 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    private void clearImageChoices(){
+        choice1.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        choice2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        choice3.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        choice4.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        choice5.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+    }
 
 }

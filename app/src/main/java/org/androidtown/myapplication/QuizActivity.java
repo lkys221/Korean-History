@@ -116,6 +116,9 @@ public class QuizActivity extends AppCompatActivity {
         layout_choice4 = (ViewGroup) findViewById(R.id.layout_choice4);
         layout_choice5 = (ViewGroup) findViewById(R.id.layout_choice5);
 
+        if(loadChoice(0) != 0)
+            makeChoiceSelected(loadChoice(0));
+
         layout_choice1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,6 +166,7 @@ public class QuizActivity extends AppCompatActivity {
         index++;
         choice = 0;
 
+        //after last question
         if(index > questionArr.length - 1){
             checkAnswer();
             Toast.makeText(getApplicationContext(), "Your score is " + score + "/" + questionArr.length, Toast.LENGTH_LONG).show();
@@ -182,27 +186,11 @@ public class QuizActivity extends AppCompatActivity {
 
             //marking saved choices
             int finalChoice = loadChoice(index);
-
-            switch (finalChoice){
-                case 0: emptyChoices();
-                    choice = 0;
-                    break;
-                case 1: clickChoice(layout_choice1);
-                    break;
-                case 2: clickChoice(layout_choice2);
-                    break;
-                case 3: clickChoice(layout_choice3);
-                    break;
-                case 4: clickChoice(layout_choice4);
-                    break;
-                case 5: clickChoice(layout_choice5);
-                    break;
-            }
+            makeChoiceSelected(finalChoice);
         }
 
                 return true;
     }
-
 
     public boolean onPreviousBtnClicked(){
         //save current question's choice
@@ -229,21 +217,7 @@ public class QuizActivity extends AppCompatActivity {
 
         //marking saved choices
         int finalChoice = loadChoice(index);
-
-        switch (finalChoice){
-            case 0: emptyChoices();
-                break;
-            case 1: clickChoice(layout_choice1);
-                break;
-            case 2: clickChoice(layout_choice2);
-                break;
-            case 3: clickChoice(layout_choice3);
-                break;
-            case 4: clickChoice(layout_choice4);
-                break;
-            case 5: clickChoice(layout_choice5);
-                break;
-        }
+        makeChoiceSelected(finalChoice);
 
         return true;
     }
@@ -286,6 +260,24 @@ public class QuizActivity extends AppCompatActivity {
             choice5.setText(choiceArr[index][4]);
 
             return false;
+        }
+    }
+
+    private void makeChoiceSelected(int finalChoice) {
+        switch (finalChoice){
+            case 0: emptyChoices();
+                choice = 0;
+                break;
+            case 1: clickChoice(layout_choice1);
+                break;
+            case 2: clickChoice(layout_choice2);
+                break;
+            case 3: clickChoice(layout_choice3);
+                break;
+            case 4: clickChoice(layout_choice4);
+                break;
+            case 5: clickChoice(layout_choice5);
+                break;
         }
     }
 

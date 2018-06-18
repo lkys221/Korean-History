@@ -14,19 +14,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="?attr/colorPrimaryDark"
             >
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp">
+                android:background="@drawable/layout_rc_primary"
+                android:layout_margin="5dp">
 
                 <TextView
                     android:id="@+id/question"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="question"
-                    android:textSize="30dp"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
                     android:textStyle="bold"
                     />
 
@@ -34,7 +38,9 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_rc_white"
+                android:layout_margin="5dp">
 
                 <ImageView
                     android:id="@+id/image"
@@ -52,14 +58,16 @@
                 android:orientation="vertical"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="12dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:background="@drawable/layout_rc_primary"
+                android:layout_margin="5dp">
 
                 <LinearLayout
                     android:id="@+id/layout_choice1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:background="@drawable/layout_rc"
+                    android:background="@drawable/layout_rc_primary"
                     android:layout_marginTop="8dp">
 
                     <ImageView
@@ -79,6 +87,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
                         android:text="choice1"
+                        android:textColor="#ffffff"
                         android:textSize="15sp"/>
 
 
@@ -91,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/layout_rc">
+                    android:background="@drawable/layout_rc_primary">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -110,6 +119,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
                         android:text="choice2"
+                        android:textColor="#ffffff"
                         android:textSize="15sp"/>
 
                 </LinearLayout>
@@ -119,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:background="@drawable/layout_rc"
+                    android:background="@drawable/layout_rc_primary"
                     android:layout_marginTop="8dp">
 
                     <ImageView
@@ -139,6 +149,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
                         android:text="choice3"
+                        android:textColor="#ffffff"
                         android:textSize="15sp"/>
 
                 </LinearLayout>
@@ -148,7 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:background="@drawable/layout_rc"
+                    android:background="@drawable/layout_rc_primary"
                     android:layout_marginTop="8dp">
 
                     <ImageView
@@ -168,6 +179,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
                         android:text="center_vertical"
+                        android:textColor="#ffffff"
                         android:textSize="15dp" />
 
                 </LinearLayout>
@@ -177,7 +189,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:background="@drawable/layout_rc"
+                    android:background="@drawable/layout_rc_primary"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp">
 
@@ -197,6 +209,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
+                        android:textColor="#ffffff"
                         android:text="정착 생활을 하게 되면서 움집이 처음 만들어졌습니다.정착 생활을 하게 되면서 움집이 처음 만들어졌습니다."
                         android:textSize="15dp"/>
 
@@ -214,7 +227,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/colorPrimary"
+        android:background="?attr/colorPrimaryDark"
         app:itemIconTint="@drawable/nav_item_color"
         app:itemTextColor="@drawable/nav_item_color"
         app:menu="@menu/bottom_navigation_menu"

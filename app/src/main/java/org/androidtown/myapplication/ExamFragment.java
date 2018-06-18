@@ -38,7 +38,6 @@ public class ExamFragment extends Fragment {
         public TextView description;
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.item_list, parent, false));
-            avator = (ImageView) itemView.findViewById(R.id.list_avatar);
             name = (TextView) itemView.findViewById(R.id.list_title);
             description = (TextView) itemView.findViewById(R.id.list_desc);
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -59,18 +58,11 @@ public class ExamFragment extends Fragment {
 
         private final String[] mPlaces;
         private final String[] mPlaceDesc;
-        private final Drawable[] mPlaceAvators;
 
         public ContentAdapter(Context context) {
             Resources resources = context.getResources();
             mPlaces = resources.getStringArray(R.array.places);
             mPlaceDesc = resources.getStringArray(R.array.place_desc);
-            TypedArray a = resources.obtainTypedArray(R.array.place_avator);
-            mPlaceAvators = new Drawable[a.length()];
-            for (int i = 0; i < mPlaceAvators.length; i++) {
-                mPlaceAvators[i] = a.getDrawable(i);
-            }
-            a.recycle();
         }
 
         @Override
@@ -80,7 +72,6 @@ public class ExamFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.avator.setImageDrawable(mPlaceAvators[position % mPlaceAvators.length]);
             holder.name.setText(mPlaces[position % mPlaces.length]);
             holder.description.setText(mPlaceDesc[position % mPlaceDesc.length]);
         }

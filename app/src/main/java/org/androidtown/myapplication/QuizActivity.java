@@ -287,11 +287,11 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void emptyChoices(){
-        layout_choice1.setBackgroundResource(R.drawable.layout_rc);
-        layout_choice2.setBackgroundResource(R.drawable.layout_rc);
-        layout_choice3.setBackgroundResource(R.drawable.layout_rc);
-        layout_choice4.setBackgroundResource(R.drawable.layout_rc);
-        layout_choice5.setBackgroundResource(R.drawable.layout_rc);
+        layout_choice1.setBackgroundResource(R.drawable.layout_rc_primary);
+        layout_choice2.setBackgroundResource(R.drawable.layout_rc_primary);
+        layout_choice3.setBackgroundResource(R.drawable.layout_rc_primary);
+        layout_choice4.setBackgroundResource(R.drawable.layout_rc_primary);
+        layout_choice5.setBackgroundResource(R.drawable.layout_rc_primary);
     }
 
     private void saveChoices(int index, int choiceNum){

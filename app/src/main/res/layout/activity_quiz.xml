@@ -78,7 +78,7 @@
                         android:maxHeight="20dp"
                         android:maxWidth="20dp"
                         android:layout_marginEnd="4dp"
-                        android:src="@drawable/one"
+                        android:src="@drawable/white_one"
                         />
 
                     <TextView
@@ -110,7 +110,7 @@
                         android:maxHeight="20dp"
                         android:maxWidth="20dp"
                         android:layout_marginEnd="4dp"
-                        android:src="@drawable/two"
+                        android:src="@drawable/white_two"
                         />
 
                     <TextView
@@ -140,7 +140,7 @@
                         android:maxHeight="20dp"
                         android:maxWidth="20dp"
                         android:layout_marginEnd="4dp"
-                        android:src="@drawable/three"
+                        android:src="@drawable/white_three"
                         />
 
                     <TextView
@@ -170,7 +170,7 @@
                         android:maxHeight="20dp"
                         android:maxWidth="20dp"
                         android:layout_marginEnd="4dp"
-                        android:src="@drawable/four"
+                        android:src="@drawable/white_four"
                         />
 
                     <TextView
@@ -201,7 +201,7 @@
                         android:maxHeight="20dp"
                         android:maxWidth="20dp"
                         android:layout_marginEnd="4dp"
-                        android:src="@drawable/five"
+                        android:src="@drawable/white_five"
                         />
 
                     <TextView

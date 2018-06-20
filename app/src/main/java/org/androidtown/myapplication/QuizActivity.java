@@ -1,6 +1,5 @@
 package org.androidtown.myapplication;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,8 +22,8 @@ public class QuizActivity extends AppCompatActivity {
     ViewGroup layout_choice1, layout_choice2, layout_choice3, layout_choice4, layout_choice5;
     ScrollView scrollView;
 
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
+    SharedPreferences choicePref, resultPref;
+    SharedPreferences.Editor choiceEditor, resultEditor;
 
 
     String[] questionArr = {"1.교사의 질문에대한 답변으로 가장 적절한 것은?", "2. (가), (나) 나라에 대한 설명으로 옳은 것은?", "3. 다음 법을 시행하였던 나라에 대한 설명으로 옳은 것은?", "4. 밑줄 그은 ‘대책’으로 옳은 것은?", "5.다음 사건이 일어난 이후의 시실로 옳은 것은?", "6.(개, (나) 사이의 시기에 있었던 사실로 옳은 것은? ", "7.다음 자료에 나타난 시기의사실로 옳은 것은?", "8.(가) 왕에 대한 설명으로 옳은 것은?", "9. (가) 국가의 경제 싱황에 대한 설명으로 옳은 것은?",
@@ -62,8 +61,11 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        pref = getSharedPreferences("Choices", Context.MODE_PRIVATE);
-        editor = pref.edit();
+        choicePref = getSharedPreferences("Choices", Context.MODE_PRIVATE);
+        choiceEditor = choicePref.edit();
+
+        resultPref = getSharedPreferences("Results", Context.MODE_PRIVATE);
+        resultEditor = resultPref.edit();
 
 
         //Bottom Navigation Bar
@@ -170,6 +172,7 @@ public class QuizActivity extends AppCompatActivity {
         if(index > questionArr.length - 1){
             checkAnswer();
             Toast.makeText(getApplicationContext(), "Your score is " + score + "/" + questionArr.length, Toast.LENGTH_LONG).show();
+            gotoResultPage();
             finish();
             return false;
         }
@@ -295,17 +298,17 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void saveChoices(int index, int choiceNum){
-        editor.putInt(""+index, choiceNum);
-        editor.commit();
+        choiceEditor.putInt(""+index, choiceNum);
+        choiceEditor.commit();
     }
 
     private int loadChoice(int index){
-        int finalChoice = pref.getInt(""+index, 0);
+        int finalChoice = choicePref.getInt(""+index, 0);
         return finalChoice;
     }
 
     private void deleteData(){
-        editor.clear();
+        choiceEditor.clear();
     }
 
     private void checkAnswer(){
@@ -313,8 +316,9 @@ public class QuizActivity extends AppCompatActivity {
 
         for (int i = 0; i < questionArr.length; i++) {
             userAns = loadChoice(i);
-            if(userAns == answerArr[i])
+            if(userAns == answerArr[i]) {
                 score++;
+            }
         }
 
     }
@@ -333,6 +337,11 @@ public class QuizActivity extends AppCompatActivity {
         choice3.setText("");
         choice4.setText("");
         choice5.setText("");
+    }
+
+    private void gotoResultPage(){
+        Intent intent = new Intent(this, ResultActivity.class);
+        startActivity(intent);
     }
 
 }
